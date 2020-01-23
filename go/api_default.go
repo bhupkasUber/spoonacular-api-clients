@@ -1224,7 +1224,7 @@ type ExtractRecipeFromWebsiteOpts struct {
 	ForceExtraction optional.Bool
 }
 
-func (a *DefaultApiService) ExtractRecipeFromWebsite(ctx context.Context, url string, localVarOptionals *ExtractRecipeFromWebsiteOpts) (map[string]interface{}, *http.Response, error) {
+func (a *DefaultApiService) ExtractRecipeFromWebsite(ctx context.Context, urlString string, localVarOptionals *ExtractRecipeFromWebsiteOpts) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1241,7 +1241,7 @@ func (a *DefaultApiService) ExtractRecipeFromWebsite(ctx context.Context, url st
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("url", parameterToString(url, ""))
+	localVarQueryParams.Add("url", parameterToString(urlString, ""))
 	if localVarOptionals != nil && localVarOptionals.ForceExtraction.IsSet() {
 		localVarQueryParams.Add("forceExtraction", parameterToString(localVarOptionals.ForceExtraction.Value(), ""))
 	}

@@ -249,6 +249,12 @@ func (c *APIClient) prepareRequest(
 		}
 	}
 
+	if ctx != nil {
+		if apiKey, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			query.Add("apiKey", apiKey.Key)
+		}
+	}
+
 	// Encode the parameters.
 	url.RawQuery = query.Encode()
 

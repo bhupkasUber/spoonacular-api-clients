@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "api_default.go",
+        "client.go",
+        "configuration.go",
+        "model_inline_object.go",
+        "model_inline_object_1.go",
+        "model_inline_object_2.go",
+        "model_inline_object_3.go",
+        "model_inline_object_4.go",
+        "model_inline_object_5.go",
+        "model_inline_object_6.go",
+        "model_inline_object_7.go",
+        "model_inline_object_8.go",
+        "model_inline_object_9.go",
+        "response.go",
+    ],
+    importpath = "code.uber.internal/eats/domain/restaurant/adhoc/scripts/metadata/spoonacular",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_antihax_optional//:go_default_library",
+        "@org_golang_x_oauth2//:go_default_library",
+    ],
+)

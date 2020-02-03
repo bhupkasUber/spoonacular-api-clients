@@ -12,13 +12,13 @@ package spoonacular
 
 import (
 	"context"
+	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
-	"fmt"
-	"github.com/antihax/optional"
 	"os"
+	"strings"
 )
 
 // Linger please
@@ -217,9 +217,9 @@ Autocomplete the entry of an ingredient.
 */
 
 type AutocompleteIngredientSearchOpts struct {
-	Number optional.Float32
+	Number          optional.Float32
 	MetaInformation optional.Bool
-	Intolerances optional.Bool
+	Intolerances    optional.Bool
 }
 
 func (a *DefaultApiService) AutocompleteIngredientSearch(ctx context.Context, query string, localVarOptionals *AutocompleteIngredientSearchOpts) (map[string]interface{}, *http.Response, error) {
@@ -1009,10 +1009,10 @@ Generate a recipe card for a recipe.
 */
 
 type CreateRecipeCardOpts struct {
-	Author optional.String
+	Author          optional.String
 	BackgroundColor optional.String
-	FontColor optional.String
-	Source optional.String
+	FontColor       optional.String
+	Source          optional.String
 }
 
 func (a *DefaultApiService) CreateRecipeCard(ctx context.Context, title string, image *os.File, ingredients string, instructions string, readyInMinutes float32, servings float32, mask string, backgroundImage string, localVarOptionals *CreateRecipeCardOpts) (map[string]interface{}, *http.Response, error) {
@@ -1321,10 +1321,10 @@ Generate a meal plan with three meals per day (breakfast, lunch, and dinner).
 */
 
 type GenerateMealPlanOpts struct {
-	TimeFrame optional.String
+	TimeFrame      optional.String
 	TargetCalories optional.Float32
-	Diet optional.String
-	Exclude optional.String
+	Diet           optional.String
+	Exclude        optional.String
 }
 
 func (a *DefaultApiService) GenerateMealPlan(ctx context.Context, localVarOptionals *GenerateMealPlanOpts) (map[string]interface{}, *http.Response, error) {
@@ -1890,7 +1890,7 @@ Use an ingredient id to get all available information about an ingredient, such 
 
 type GetIngredientInformationOpts struct {
 	Amount optional.Float32
-	Unit optional.String
+	Unit   optional.String
 }
 
 func (a *DefaultApiService) GetIngredientInformation(ctx context.Context, id float32, localVarOptionals *GetIngredientInformationOpts) (map[string]interface{}, *http.Response, error) {
@@ -2431,8 +2431,8 @@ Find random (popular) recipes. If you need to filter recipes by diet, nutrition 
 
 type GetRandomRecipesOpts struct {
 	LimitLicense optional.Bool
-	Tags optional.String
-	Number optional.Float32
+	Tags         optional.String
+	Number       optional.Float32
 }
 
 func (a *DefaultApiService) GetRandomRecipes(ctx context.Context, localVarOptionals *GetRandomRecipesOpts) (map[string]interface{}, *http.Response, error) {
@@ -2638,7 +2638,7 @@ func (a *DefaultApiService) GetRecipeInformation(ctx context.Context, id float32
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/recipes/{id}/information"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", int32(id)), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3369,9 +3369,9 @@ Get a specific wine recommendation (concrete product) for a given wine type, e.g
 */
 
 type GetWineRecommendationOpts struct {
-	MaxPrice optional.Float32
+	MaxPrice  optional.Float32
 	MinRating optional.Float32
-	Number optional.Float32
+	Number    optional.Float32
 }
 
 func (a *DefaultApiService) GetWineRecommendation(ctx context.Context, wine string, localVarOptionals *GetWineRecommendationOpts) (map[string]interface{}, *http.Response, error) {
@@ -3848,15 +3848,15 @@ Find recipe and other food related videos.
 */
 
 type SearchFoodVideosOpts struct {
-	Type_ optional.String
-	Cuisine optional.String
-	Diet optional.String
+	Type_              optional.String
+	Cuisine            optional.String
+	Diet               optional.String
 	IncludeIngredients optional.String
 	ExcludeIngredients optional.String
-	MinLength optional.Float32
-	MaxLength optional.Float32
-	Offset optional.Float32
-	Number optional.Float32
+	MinLength          optional.Float32
+	MaxLength          optional.Float32
+	Offset             optional.Float32
+	Number             optional.Float32
 }
 
 func (a *DefaultApiService) SearchFoodVideos(ctx context.Context, query string, localVarOptionals *SearchFoodVideosOpts) (map[string]interface{}, *http.Response, error) {
@@ -3989,14 +3989,14 @@ Search packaged food products, such as frozen pizza or Greek yogurt.
 type SearchGroceryProductsOpts struct {
 	MinCalories optional.Float32
 	MaxCalories optional.Float32
-	MinCarbs optional.Float32
-	MaxCarbs optional.Float32
-	MinProtein optional.Float32
-	MaxProtein optional.Float32
-	MinFat optional.Float32
-	MaxFat optional.Float32
-	Offset optional.Float32
-	Number optional.Float32
+	MinCarbs    optional.Float32
+	MaxCarbs    optional.Float32
+	MinProtein  optional.Float32
+	MaxProtein  optional.Float32
+	MinFat      optional.Float32
+	MaxFat      optional.Float32
+	Offset      optional.Float32
+	Number      optional.Float32
 }
 
 func (a *DefaultApiService) SearchGroceryProducts(ctx context.Context, query string, localVarOptionals *SearchGroceryProductsOpts) (map[string]interface{}, *http.Response, error) {
@@ -4220,14 +4220,14 @@ Search over 115,000 menu items from over 800 fast food and chain restaurants. Fo
 type SearchMenuItemsOpts struct {
 	MinCalories optional.Float32
 	MaxCalories optional.Float32
-	MinCarbs optional.Float32
-	MaxCarbs optional.Float32
-	MinProtein optional.Float32
-	MaxProtein optional.Float32
-	MinFat optional.Float32
-	MaxFat optional.Float32
-	Offset optional.Float32
-	Number optional.Float32
+	MinCarbs    optional.Float32
+	MaxCarbs    optional.Float32
+	MinProtein  optional.Float32
+	MaxProtein  optional.Float32
+	MinFat      optional.Float32
+	MaxFat      optional.Float32
+	Offset      optional.Float32
+	Number      optional.Float32
 }
 
 func (a *DefaultApiService) SearchMenuItems(ctx context.Context, query string, localVarOptionals *SearchMenuItemsOpts) (map[string]interface{}, *http.Response, error) {
@@ -4359,13 +4359,13 @@ Our recipe API includes over 360,000 recipes as well as an open source recipe da
 */
 
 type SearchRecipesOpts struct {
-	Cuisine optional.String
-	Diet optional.String
-	ExcludeIngredients optional.String
-	Intolerances optional.String
-	Offset optional.Float32
-	Number optional.Float32
-	LimitLicense optional.Bool
+	Cuisine              optional.String
+	Diet                 optional.String
+	ExcludeIngredients   optional.String
+	Intolerances         optional.String
+	Offset               optional.Float32
+	Number               optional.Float32
+	LimitLicense         optional.Bool
 	InstructionsRequired optional.Bool
 }
 
@@ -4488,9 +4488,9 @@ Ever wondered what recipes you can cook with the ingredients you have in your fr
 */
 
 type SearchRecipesByIngredientsOpts struct {
-	Number optional.Float32
+	Number       optional.Float32
 	LimitLicense optional.Bool
-	Ranking optional.Float32
+	Ranking      optional.Float32
 	IgnorePantry optional.Bool
 }
 
@@ -4672,82 +4672,82 @@ Find a set of recipes that adhere to the given nutritional limits. You may set l
 */
 
 type SearchRecipesByNutrientsOpts struct {
-	MinCarbs optional.Float32
-	MaxCarbs optional.Float32
-	MinProtein optional.Float32
-	MaxProtein optional.Float32
-	MinCalories optional.Float32
-	MaxCalories optional.Float32
-	MinFat optional.Float32
-	MaxFat optional.Float32
-	MinAlcohol optional.Float32
-	MaxAlcohol optional.Float32
-	MinCaffeine optional.Float32
-	MaxCaffeine optional.Float32
-	MinCopper optional.Float32
-	MaxCopper optional.Float32
-	MinCalcium optional.Float32
-	MaxCalcium optional.Float32
-	MinCholine optional.Float32
-	MaxCholine optional.Float32
-	MinCholesterol optional.Float32
-	MaxCholesterol optional.Float32
-	MinFluoride optional.Float32
-	MaxFluoride optional.Float32
+	MinCarbs        optional.Float32
+	MaxCarbs        optional.Float32
+	MinProtein      optional.Float32
+	MaxProtein      optional.Float32
+	MinCalories     optional.Float32
+	MaxCalories     optional.Float32
+	MinFat          optional.Float32
+	MaxFat          optional.Float32
+	MinAlcohol      optional.Float32
+	MaxAlcohol      optional.Float32
+	MinCaffeine     optional.Float32
+	MaxCaffeine     optional.Float32
+	MinCopper       optional.Float32
+	MaxCopper       optional.Float32
+	MinCalcium      optional.Float32
+	MaxCalcium      optional.Float32
+	MinCholine      optional.Float32
+	MaxCholine      optional.Float32
+	MinCholesterol  optional.Float32
+	MaxCholesterol  optional.Float32
+	MinFluoride     optional.Float32
+	MaxFluoride     optional.Float32
 	MinSaturatedFat optional.Float32
 	MaxSaturatedFat optional.Float32
-	MinVitaminA optional.Float32
-	MaxVitaminA optional.Float32
-	MinVitaminC optional.Float32
-	MaxVitaminC optional.Float32
-	MinVitaminD optional.Float32
-	MaxVitaminD optional.Float32
-	MinVitaminE optional.Float32
-	MaxVitaminE optional.Float32
-	MinVitaminK optional.Float32
-	MaxVitaminK optional.Float32
-	MinVitaminB1 optional.Float32
-	MaxVitaminB1 optional.Float32
-	MinVitaminB2 optional.Float32
-	MaxVitaminB2 optional.Float32
-	MinVitaminB5 optional.Float32
-	MaxVitaminB5 optional.Float32
-	MinVitaminB3 optional.Float32
-	MaxVitaminB3 optional.Float32
-	MinVitaminB6 optional.Float32
-	MaxVitaminB6 optional.Float32
-	MinVitaminB12 optional.Float32
-	MaxVitaminB12 optional.Float32
-	MinFiber optional.Float32
-	MaxFiber optional.Float32
-	MinFolate optional.Float32
-	MaxFolate optional.Float32
-	MinFolicAcid optional.Float32
-	MaxFolicAcid optional.Float32
-	MinIodine optional.Float32
-	MaxIodine optional.Float32
-	MinIron optional.Float32
-	MaxIron optional.Float32
-	MinMagnesium optional.Float32
-	MaxMagnesium optional.Float32
-	MinManganese optional.Float32
-	MaxManganese optional.Float32
-	MinPhosphorus optional.Float32
-	MaxPhosphorus optional.Float32
-	MinPotassium optional.Float32
-	MaxPotassium optional.Float32
-	MinSelenium optional.Float32
-	MaxSelenium optional.Float32
-	MinSodium optional.Float32
-	MaxSodium optional.Float32
-	MinSugar optional.Float32
-	MaxSugar optional.Float32
-	MinZinc optional.Float32
-	MaxZinc optional.Float32
-	Offset optional.Float32
-	Number optional.Float32
-	Random optional.Bool
-	LimitLicense optional.Bool
+	MinVitaminA     optional.Float32
+	MaxVitaminA     optional.Float32
+	MinVitaminC     optional.Float32
+	MaxVitaminC     optional.Float32
+	MinVitaminD     optional.Float32
+	MaxVitaminD     optional.Float32
+	MinVitaminE     optional.Float32
+	MaxVitaminE     optional.Float32
+	MinVitaminK     optional.Float32
+	MaxVitaminK     optional.Float32
+	MinVitaminB1    optional.Float32
+	MaxVitaminB1    optional.Float32
+	MinVitaminB2    optional.Float32
+	MaxVitaminB2    optional.Float32
+	MinVitaminB5    optional.Float32
+	MaxVitaminB5    optional.Float32
+	MinVitaminB3    optional.Float32
+	MaxVitaminB3    optional.Float32
+	MinVitaminB6    optional.Float32
+	MaxVitaminB6    optional.Float32
+	MinVitaminB12   optional.Float32
+	MaxVitaminB12   optional.Float32
+	MinFiber        optional.Float32
+	MaxFiber        optional.Float32
+	MinFolate       optional.Float32
+	MaxFolate       optional.Float32
+	MinFolicAcid    optional.Float32
+	MaxFolicAcid    optional.Float32
+	MinIodine       optional.Float32
+	MaxIodine       optional.Float32
+	MinIron         optional.Float32
+	MaxIron         optional.Float32
+	MinMagnesium    optional.Float32
+	MaxMagnesium    optional.Float32
+	MinManganese    optional.Float32
+	MaxManganese    optional.Float32
+	MinPhosphorus   optional.Float32
+	MaxPhosphorus   optional.Float32
+	MinPotassium    optional.Float32
+	MaxPotassium    optional.Float32
+	MinSelenium     optional.Float32
+	MaxSelenium     optional.Float32
+	MinSodium       optional.Float32
+	MaxSodium       optional.Float32
+	MinSugar        optional.Float32
+	MaxSugar        optional.Float32
+	MinZinc         optional.Float32
+	MaxZinc         optional.Float32
+	Offset          optional.Float32
+	Number          optional.Float32
+	Random          optional.Bool
+	LimitLicense    optional.Bool
 }
 
 func (a *DefaultApiService) SearchRecipesByNutrients(ctx context.Context, localVarOptionals *SearchRecipesByNutrientsOpts) (map[string]interface{}, *http.Response, error) {
@@ -5161,99 +5161,99 @@ Search through hundreds of thousands of recipes using advanced filtering and ran
 */
 
 type SearchRecipesComplexOpts struct {
-	Cuisine optional.String
-	ExcludeCuisine optional.String
-	Diet optional.String
-	Intolerances optional.String
-	Equipment optional.String
-	IncludeIngredients optional.String
-	ExcludeIngredients optional.String
-	Type_ optional.String
+	Cuisine              optional.String
+	ExcludeCuisine       optional.String
+	Diet                 optional.String
+	Intolerances         optional.String
+	Equipment            optional.String
+	IncludeIngredients   optional.String
+	ExcludeIngredients   optional.String
+	Type_                optional.String
 	InstructionsRequired optional.Bool
-	FillIngredients optional.Bool
+	FillIngredients      optional.Bool
 	AddRecipeInformation optional.Bool
-	Author optional.String
-	Tags optional.String
-	TitleMatch optional.String
-	MaxReadyTime optional.Float32
-	IgnorePantry optional.Bool
-	Sort optional.String
-	SortDirection optional.String
-	MinCarbs optional.Float32
-	MaxCarbs optional.Float32
-	MinProtein optional.Float32
-	MaxProtein optional.Float32
-	MinCalories optional.Float32
-	MaxCalories optional.Float32
-	MinFat optional.Float32
-	MaxFat optional.Float32
-	MinAlcohol optional.Float32
-	MaxAlcohol optional.Float32
-	MinCaffeine optional.Float32
-	MaxCaffeine optional.Float32
-	MinCopper optional.Float32
-	MaxCopper optional.Float32
-	MinCalcium optional.Float32
-	MaxCalcium optional.Float32
-	MinCholine optional.Float32
-	MaxCholine optional.Float32
-	MinCholesterol optional.Float32
-	MaxCholesterol optional.Float32
-	MinFluoride optional.Float32
-	MaxFluoride optional.Float32
-	MinSaturatedFat optional.Float32
-	MaxSaturatedFat optional.Float32
-	MinVitaminA optional.Float32
-	MaxVitaminA optional.Float32
-	MinVitaminC optional.Float32
-	MaxVitaminC optional.Float32
-	MinVitaminD optional.Float32
-	MaxVitaminD optional.Float32
-	MinVitaminE optional.Float32
-	MaxVitaminE optional.Float32
-	MinVitaminK optional.Float32
-	MaxVitaminK optional.Float32
-	MinVitaminB1 optional.Float32
-	MaxVitaminB1 optional.Float32
-	MinVitaminB2 optional.Float32
-	MaxVitaminB2 optional.Float32
-	MinVitaminB5 optional.Float32
-	MaxVitaminB5 optional.Float32
-	MinVitaminB3 optional.Float32
-	MaxVitaminB3 optional.Float32
-	MinVitaminB6 optional.Float32
-	MaxVitaminB6 optional.Float32
-	MinVitaminB12 optional.Float32
-	MaxVitaminB12 optional.Float32
-	MinFiber optional.Float32
-	MaxFiber optional.Float32
-	MinFolate optional.Float32
-	MaxFolate optional.Float32
-	MinFolicAcid optional.Float32
-	MaxFolicAcid optional.Float32
-	MinIodine optional.Float32
-	MaxIodine optional.Float32
-	MinIron optional.Float32
-	MaxIron optional.Float32
-	MinMagnesium optional.Float32
-	MaxMagnesium optional.Float32
-	MinManganese optional.Float32
-	MaxManganese optional.Float32
-	MinPhosphorus optional.Float32
-	MaxPhosphorus optional.Float32
-	MinPotassium optional.Float32
-	MaxPotassium optional.Float32
-	MinSelenium optional.Float32
-	MaxSelenium optional.Float32
-	MinSodium optional.Float32
-	MaxSodium optional.Float32
-	MinSugar optional.Float32
-	MaxSugar optional.Float32
-	MinZinc optional.Float32
-	MaxZinc optional.Float32
-	Offset optional.Float32
-	Number optional.Float32
-	LimitLicense optional.Bool
+	Author               optional.String
+	Tags                 optional.String
+	TitleMatch           optional.String
+	MaxReadyTime         optional.Float32
+	IgnorePantry         optional.Bool
+	Sort                 optional.String
+	SortDirection        optional.String
+	MinCarbs             optional.Float32
+	MaxCarbs             optional.Float32
+	MinProtein           optional.Float32
+	MaxProtein           optional.Float32
+	MinCalories          optional.Float32
+	MaxCalories          optional.Float32
+	MinFat               optional.Float32
+	MaxFat               optional.Float32
+	MinAlcohol           optional.Float32
+	MaxAlcohol           optional.Float32
+	MinCaffeine          optional.Float32
+	MaxCaffeine          optional.Float32
+	MinCopper            optional.Float32
+	MaxCopper            optional.Float32
+	MinCalcium           optional.Float32
+	MaxCalcium           optional.Float32
+	MinCholine           optional.Float32
+	MaxCholine           optional.Float32
+	MinCholesterol       optional.Float32
+	MaxCholesterol       optional.Float32
+	MinFluoride          optional.Float32
+	MaxFluoride          optional.Float32
+	MinSaturatedFat      optional.Float32
+	MaxSaturatedFat      optional.Float32
+	MinVitaminA          optional.Float32
+	MaxVitaminA          optional.Float32
+	MinVitaminC          optional.Float32
+	MaxVitaminC          optional.Float32
+	MinVitaminD          optional.Float32
+	MaxVitaminD          optional.Float32
+	MinVitaminE          optional.Float32
+	MaxVitaminE          optional.Float32
+	MinVitaminK          optional.Float32
+	MaxVitaminK          optional.Float32
+	MinVitaminB1         optional.Float32
+	MaxVitaminB1         optional.Float32
+	MinVitaminB2         optional.Float32
+	MaxVitaminB2         optional.Float32
+	MinVitaminB5         optional.Float32
+	MaxVitaminB5         optional.Float32
+	MinVitaminB3         optional.Float32
+	MaxVitaminB3         optional.Float32
+	MinVitaminB6         optional.Float32
+	MaxVitaminB6         optional.Float32
+	MinVitaminB12        optional.Float32
+	MaxVitaminB12        optional.Float32
+	MinFiber             optional.Float32
+	MaxFiber             optional.Float32
+	MinFolate            optional.Float32
+	MaxFolate            optional.Float32
+	MinFolicAcid         optional.Float32
+	MaxFolicAcid         optional.Float32
+	MinIodine            optional.Float32
+	MaxIodine            optional.Float32
+	MinIron              optional.Float32
+	MaxIron              optional.Float32
+	MinMagnesium         optional.Float32
+	MaxMagnesium         optional.Float32
+	MinManganese         optional.Float32
+	MaxManganese         optional.Float32
+	MinPhosphorus        optional.Float32
+	MaxPhosphorus        optional.Float32
+	MinPotassium         optional.Float32
+	MaxPotassium         optional.Float32
+	MinSelenium          optional.Float32
+	MaxSelenium          optional.Float32
+	MinSodium            optional.Float32
+	MaxSodium            optional.Float32
+	MinSugar             optional.Float32
+	MaxSugar             optional.Float32
+	MinZinc              optional.Float32
+	MaxZinc              optional.Float32
+	Offset               optional.Float32
+	Number               optional.Float32
+	LimitLicense         optional.Bool
 }
 
 func (a *DefaultApiService) SearchRecipesComplex(ctx context.Context, query string, localVarOptionals *SearchRecipesComplexOpts) (map[string]interface{}, *http.Response, error) {
@@ -5904,8 +5904,8 @@ Visualize the equipment used to make a recipe.
 */
 
 type VisualizeEquipmentOpts struct {
-	View optional.String
-	DefaultCss optional.Bool
+	View         optional.String
+	DefaultCss   optional.Bool
 	ShowBacklink optional.Bool
 }
 
@@ -6015,9 +6015,9 @@ Visualize ingredients of a recipe.
 */
 
 type VisualizeIngredientsOpts struct {
-	Measure optional.String
-	View optional.String
-	DefaultCss optional.Bool
+	Measure      optional.String
+	View         optional.String
+	DefaultCss   optional.Bool
 	ShowBacklink optional.Bool
 }
 
@@ -6227,8 +6227,8 @@ Visualize the price breakdown of a recipe.
 */
 
 type VisualizePriceBreakdownOpts struct {
-	Mode optional.Float32
-	DefaultCss optional.Bool
+	Mode         optional.Float32
+	DefaultCss   optional.Bool
 	ShowBacklink optional.Bool
 }
 
@@ -6630,7 +6630,7 @@ Visualize a recipe&#39;s nutritional information as HTML including CSS
 */
 
 type VisualizeRecipeNutritionOpts struct {
-	DefaultCss optional.Bool
+	DefaultCss   optional.Bool
 	ShowBacklink optional.Bool
 }
 
